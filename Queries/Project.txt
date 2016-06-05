@@ -1,0 +1,220 @@
+1. Creating Table Book
+
+CREATE TABLE BOOK
+(
+author_fname VARCHAR(255),
+author_lname VARCHAR(255),
+title VARCHAR(255),
+price INT,
+isbn INT NOT NULL,
+category_id INT,
+edition VARCHAR(255),
+publisher VARCHAR(255),
+quantity INT,
+PRIMARY KEY (isbn)
+);
+
+2. Create Table User
+
+CREATE TABLE User
+(
+order_id INT,
+email VARCHAR(255)
+);
+
+3. Create table Category
+
+CREATE TABLE Category
+(
+category_id INT NOT NULL,
+category_name VARCHAR(255),
+PRIMARY KEY (category_id)
+); 
+
+
+Alter table book ADD FOREIGN KEY (category_id) REFERENCES category(category_id);
+
+
+ALTER TABLE Category
+ADD FOREIGN KEY (category_name)
+REFERENCES BOOK (category_name);
+4. Creating TABLE Employee
+
+CREATE TABLE Employee
+(
+emp_fname VARCHAR(255),
+emp_lname VARCHAR(255),
+emp_id INT NOT NULL,
+emp_email VARCHAR(255),
+PRIMARY KEY(emp_id)
+);
+
+5. Insert information into employee
+INSERT INTO Employee (emp_fname,emp_lname,emp_id,emp_email)
+VALUES
+('Anirudh','Pillai',1001,'aanirudh@iu.edu'),
+('Madhuri','Upadrasta',1002,'mupadras@indiana.edu');
+
+6. Creating table Customer
+CREATE TABLE Customer
+(
+cus_fname VARCHAR(255),
+cus_lname VARCHAR(255),
+email VARCHAR(255),
+address VARCHAR(255),
+city VARCHAR(255),
+state VARCHAR(255),
+zip BIGINT,
+country VARCHAR(255),
+phone BIGINT,
+card VARCHAR(255),
+PRIMARY KEY (email)
+);
+
+CREATE TABLE Order
+(
+order_id INT,
+isbn INT,
+email VARCHAR(255),
+quantity INT,
+
+7. Inserting Values into Employee
+
+INSERT INTO Employee (emp_id,emp_fname,emp_lname,emp_email)
+VALUES
+(1001,'Anirudh','Pillai','aanirudh@iu.edu'),
+(1002,'Madhuri','Upadrasta','mupadras@indiana.edu');
+
+Contact details of customer
+quantity in order books table
+link between order_books and book table
+stock information in book table
+
+8. Inserting values into category
+
+INSERT INTO Category(category_id,category_name)
+VALUES
+(11,'Business'),
+(22,'Arts'),
+(33,'Health'),
+(44,'Programming'),
+(55,'Education'),
+(66,'Home & Garden'),
+(77,'Society'),
+(88,'Fiction');
+
+9. Inserting values into Book
+
+INSERT INTO Book(author_fname,author_lname,title,price,isbn,category_id,edition,publisher,quantity)
+VALUES
+('Joyce','Farrell','Java Programming',25,1111578354,44,'Paperback','ButterWorths',5),
+('Riccardo','Poli','Genetic Programming',22.50,2147483647,44,'Hardcover','Springer',10),
+('John D','Radebaugh','International Business',20,01314097634,11,'Paperback','McGraw',7),
+('RS','Bharadwaj','Business Statistics',30,978817466,11,'Paperback','Schand',15),
+('David','Bowie','Better Homes and Gardens New Garden Book',5,0696025574,66,'Paperback','Meredith',4),
+('Stewart','Lynette','Palms for the home and garden',15,0020714270,66,'Hardcover','Angus & Robertson',8),
+('Garfield','Sobers','Health Today',6,0536610304,33,'Paperback','Angus & Robertson',2),
+('Bruce Edward','Moon','Existential art therapy: the canvas mirror',20,0398059993,33,'Hardcover','C.C. Thomas',10),
+('Stephen','Bugg','Understanding Art',10,0590531301,22,'Paperback','Scholastic',5),
+('Daniel','Vettori','Modern Art (Essential Art)',50,0752553569,22,'Hardcover','Parragon Publishing',12),
+('Kenneth','Brookbank','Educational administration',8,058203339,55,'Paperback','Longman',14),
+('Clive','Beck','Moral education:interdisciplinary approaches',10,0809117568,55,'Paperback','Newman P',1),
+('Rupert','Greer','Building Societies',14,0716313197,77,'Hardcover','Fabian Society',6),
+('John P','McKay','Western Society',25,0230594530,77,'Paperback','Scholastic',20),
+('Carolyn','Gage','The second coming of Joan of Arc and other plays',12,0939821060,88,'Paperback','Herbooks',9),
+('Kristin','Hannah','Angel Falls',30,0609605925,88,'Hardback','Crown Publishers',16),
+('Jean','Ferris','Across the grain',10,0374300305,88,'Paperback','Farrar Straus Giroux',4),
+('Siv Cedering','Fox','Joys of fantasy:the book for loving couples',5,0812821823,88,'Paperback','Stein and Day',7),
+('Frank','Rosenow','Manual Art',50,0393013987,22,'Hardcover','Norton',25),
+('John D','Roscecrance','Gambling without guilt:the legitimation of an American 
+
+pastime',60,0534089542,99,'Paperback','Brooks/Cole Pub. Co',50);
+
+
+10. Inserting values into Customer Table
+
+INSERT INTO Customer(cus_fname,cus_lname,email,address,city,state,zip,phone,card)
+VALUES
+('Anika','Hopper','ahopper@gmail.com','754-742 Non Av','Fayetteville','AR',72701,9085748736,'Credit'),
+('Neve','Santana','nsantana@hotmail.com','P.O. Box 559, 8827 Cursus Ave','Annapolis','MD',21401,8180576134,'Credit'),
+('Christopher','Haley','chaley@yahoo.com','Ap #259-9730 Non, St','Tulsa','OK',74103,3666023575,'Debit'),
+('Jameson','Bright','jamesbright@gmail.com','706-2855 Laoreet Rd.','Eugene','OR',97401,6526866931,'Debit'),
+('Jescie','Holloway','jholloway@hotmail.com','Ap #757-1842 Odio Street','Chicago','IL',60290,7826692428,'Credit'),
+('Alika','Rocha','alirocha@nytimes.com','P.O. Box 548, 3946 Sed Avenue','Baton Rouge','LA',70801,917084895,'Credit'),
+('Xavier','Pollard','xpollard@hotmail.com','P.O. Box 528986 Lectus Avenue','Tacoma','WA',98402,916491741,'Credit'),
+('Raya','Gregory','ragreg@yahoo.com','Ap #661-4800 Velit. St.','Worcester','MA',01606,9634699121,'Debit'),
+('Hyatt','Barlow','hbarlow@yahoo.com','777-4344 Commodo Ave.','Duluth','MN',55801,9634699121,'Credit'),
+('Barclay','Hale','barkhl@hotmail.com','5889 Vel, Road','Saint Paul','MN',55104,4302352231,'Debit'),
+('Chase','Wilkinson','cwilkinson@aol.com','Ap #359-4838 Sed Road','Mobile','AL',36601,2946205743,'Credit'),
+('Rana','Livingston','ranliving@yahoo.com','3261 Feugiat Rd.','San Francisco','CA',94130,7976086012,'Credit'),
+('Wendy','Ryan','wenry@usc.com','765-8607 Nulla. Street','Los Angles','CA',90007,2333550911,'Credit'),
+('Cheyenne','Webb','nec@eu.ca','P.O. Box 3425558 Consequat Rd','Henderson','NV',89002,9330459712,'Debit'),
+('Heather','Melton','metus@eget.co.uk','2960 Cras Rd.','Henderson','NV',89006,9330459132,'Credit'),
+('Kylan','Sandoval','ksandvol@hotmail.com','4469 Dis St.','San Francisco','CA',94128,7848692955,'Debit'),
+('Neve','Baker','nebaker@west.com','Ap #353-8103 Mus. Road','Salem','OR',97304,5163591898,'Credit'),
+('Kamal','Stanley','kstanley@gmail.com','P.O. Box 874, 3021 Ultrices Road','Phoenix','AZ',85009,8064611565,'Debit'),
+('Zeus','Jordan','zejord@hotmail.com','P.O. Box 958, 6749 Tellus Avenue','Phoenix','AZ',85007,3506450851,'Credit'),
+('Isadora','Armstrong','isarmstrong@gmail.com','5396 Auctor Av','Phoenix','AZ',85005,9805960134,'Debit'),
+('Wang','Stone','feugiat@gravida.org','Ap #641-2871 Sagittis Avenue','Eugene','OR',97403,8834208044,'Credit'),
+('Tana','Thomas','tthomas@go.org','642-3799 Vestibulum Rd','Salt Lake City','UT',84101,8518715784,'Credit')
+('Sharon','Holt','sholt@yahoo.com','1333 Arcu Rd','Salt Lake City','UT',84109,	2147483647,'Debit');
+
+9. Book_order Table
+ALTER TABLE Book_order
+ADD FOREIGN KEY (Email)
+
+
+10.CREATE TABLE Details
+(
+order_no INT,
+ISBN INT,
+quantity INT
+);
+
+ALTER TABLE DETAILS
+ADD FOREIGN KEY(ISBN)
+REFERENCES Book (isbn);
+
+ALTER TABLE DETAILS
+ADD FOREIGN KEY(order_no)
+REFERENCES Book_order (order_id);
+
+INSERT INTO Book_order(order_id,email,order_date)
+VALUES
+(1,'alirocha@nytimes.com',2015-08-09)
+INSERT INTO Details(order_no,isbn,quantity)
+VALUES
+(1,374300305,2)
+
+CREATE TABLE Orders
+(
+order_id INT,
+Email VARCHAR(255),
+ISBN BIGINT,
+Quantity INT,
+order_date DATE
+);
+ALTER TABLE Orders
+ADD FOREIGN KEY(Email) REFERENCES Customer(email);
+
+ALTER TABLE Orders
+ADD CHECK (quantity<=book.quantity);
+
+REFERENCES Customer(email);
+
+
+DELIMITER // 
+CREATE or REPLACE TRIGGER check_order
+BEFORE INSERT ON orders
+FOR EACH ROW
+BEGIN
+  IF (NEW.Quantity > 0) AND (SELECT quantity from book where isbn=NEW.isbn)>NEW.quantity THEN
+      SET NEW.Quantity = NEW.Quantity;
+  ELSE
+      signal sqlstate '45000' set message_text = "SORRY! WE ARE OUT OF STOCK ON THIS ONE.. (Quantity ordered is greater than quantity in stock)";
+  END IF;
+END
+//
+
+DELIMITER ;
+DELIMITER // 

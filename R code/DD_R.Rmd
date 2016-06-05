@@ -1,0 +1,58 @@
+---
+title: " Visualzing Database in R"
+author: "Anirudh"
+date: "April 25, 2016"
+output: word_document
+---
+
+###Databases can be connected with R using dbConnect library and can be used for Data analysis###
+
+```{r,eval=TRUE,warning=FALSE,message=FALSE}
+library(dbConnect)
+library(ggmap)
+library(ggplot2)
+library(maps)
+mydb = dbConnect(MySQL(), user='sid', password='saibaba', 
+                 dbname='Instabook', host='localhost')
+rs = dbSendQuery(mydb, "select *from customer")
+data = fetch(rs, n=-1)
+cities=data[5]
+a=geocode(cities$city)
+latitude<-a$lat
+longitude<-a$lon
+map("world","usa",fill = TRUE,col="yellow2",bg="lightblue", ylim=c(25, 49), mar=c(0,5,5,3))
+points(longitude,latitude, col="red", pch=16)
+
+```
+###ALL THE CITIES FROM WHERE INSTABOOK RECIEVED ORDERS###
+
+
+##POPULAR TREND:PAPERBACK VS HARDCOVER##
+
+```{r,eval=TRUE,warning=FALSE,message=FALSE}
+ps = dbSendQuery(mydb, "SELECT edition,count(edition) AS count from book
+GROUP BY edition")
+data2=fetch(ps,n=-1)
+ggplot(data = data2, aes(edition, count,fill = edition)) + geom_bar(stat="identity")
+```
+
+##CREDIT VS DEBIT CARD##
+```{r,eval=TRUE,warning=FALSE,message=FALSE}
+ms=dbSendQuery(mydb, "SELECT card,count(card) AS count from Customer
+GROUP BY card")
+data3=fetch(ms,n=-1)
+ggplot(data = data3, aes(card, count,fill = card)) + geom_bar(stat="identity")
+
+
+```
+
+##BAR GRAPH BETWEEN STATE VS NUMBER OF CUSTOMERS##
+
+```{r,eval=TRUE,warning=FALSE,message=FALSE}
+ts=dbSendQuery(mydb, "SELECT state, COUNT(state) AS count FROM Customer GROUP BY state;")
+data4=fetch(ts,n=-1)
+ggplot(data = data4, aes(state, count,fill = state)) + geom_bar(stat="identity")
+
+
+```
+
